@@ -2,38 +2,38 @@ import React from 'react';
 import PropTypes from "prop-types";
 import './Button.scss';
 
-const PrimaryButton = ({ onClick, customClassName, children }) => {
+const Button = ({ onClick, customClassName, children, disabled, datacy, title, type }) => {
   return (
     <button
+      data-testid="button"
+      data-cy={datacy}
+      disabled={disabled}
       onClick={onClick}
-      className={`btn ${customClassName ? customClassName : 'btn-primary'}`}
+      className={`btn
+        ${customClassName ? customClassName : 'btn-primary'}
+        ${type == 'rounded' ? 'rounded' : 'border-r-1' }
+      `}
     >
-      {children}
+      {title || children}
     </button>
   )
 }
 
-PrimaryButton.propTypes = {
+Button.propTypes = {
+  datacy: PropTypes.string,
+  disabled: PropTypes.bool,
   onClick: PropTypes.func,
   customClassName: PropTypes.string,
-  children: PropTypes.string.isRequired || PropTypes.element.isRequired
+  children: PropTypes.element,
+  title: PropTypes.string,
+  type:  PropTypes.oneOf(['rounded', 'default'])
 }
 
-const SecondaryButton = ({ onClick, customClassName, children}) => {
-  return (
-    <button
-      onClick={onClick}
-      className={`btn ${customClassName ? customClassName : 'btn-secondary'}`}
-    >
-      {children}
-    </button>
-  )
+Button.defaultProps = {
+  datacy: '',
+  title: '',
+  type: 'default',
+  disabled: false
 }
 
-SecondaryButton.propTypes = {
-  onClick: PropTypes.func,
-  customClassName: PropTypes.string,
-  children: PropTypes.string.isRequired || PropTypes.element.isRequired
-}
-
-export { PrimaryButton, SecondaryButton };
+export default Button;
