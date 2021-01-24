@@ -1,3 +1,14 @@
-.container-home-page {
+.page-home__container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background-color: #F4F5F7;
+}
 
+.page-home__box {
+  display: flex;
+  background-color: #F4F5F7;
+  height: 90vh;
+  width: 95vw;
+  box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.75);
 }

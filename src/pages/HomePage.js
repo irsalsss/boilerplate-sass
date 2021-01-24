@@ -1,12 +1,13 @@
 import React from 'react';
-import Button from '../components/shared/Button';
 import './HomePage.scss';
+import Sidebar from './Sidebar';
 
 const HomePage = () => {
   return (
-    <div className="container-home-page">
-      Ini adalah HomePage
-      <Button title={"Hehe"} />
+    <div className="page-home__container">
+      <div className="page-home__box">
+        <Sidebar />
+      </div>
     </div>
   )
 }
